@@ -25,7 +25,15 @@ $(document).ready(function(){
         telefon1 == "45px" ?  $('.telefon1').css('margin-left', '0') : $('.margin-left').css('display', '45px'); 
         //  console.log(Classstyle);
         
+      
+        
     })
+    $('button').click(function(event){
+        //Отключение прокрутки Скрола при  развернутом меню
+        $('body').toggleClass('lock');
+
+        $('.header').toggleClass('active');
+      }); 
 });
 
 // $( "#clickme" ).click(function() {

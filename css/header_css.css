@@ -1,22 +1,222 @@
-/* .col-1, .col-2, .col-3, .col-4, .col-5, .col-6, .col-7, .col-8, .col-9, .col-10, .col-11, .col-12, .col,
-.col-auto, .col-sm-1, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-sm-10, .col-sm-11, .col-sm-12, .col-sm,
-.col-sm-auto, .col-md-1, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-md-10, .col-md-11, .col-md-12, .col-md,
-.col-md-auto, .col-lg-1, .col-lg-2, .col-lg-3, .col-lg-4, .col-lg-5, .col-lg-6, .col-lg-7, .col-lg-8, .col-lg-9, .col-lg-10, .col-lg-11, .col-lg-12, .col-lg,
-.col-lg-auto, .col-xl-1, .col-xl-2, .col-xl-3, .col-xl-4, .col-xl-5, .col-xl-6, .col-xl-7, .col-xl-8, .col-xl-9, .col-xl-10, .col-xl-11, .col-xl-12, .col-xl,
-.col-xl-auto {
-  position: relative;
+/* Обучение */
+*,*:before,*:after{
+  padding:0;
+  margin:0;
+  border:0;
+  box-sizing: border-box;
+}
+html,body{
+  height:100%;
+}
+/* Стили для демонстрации */
+.wrapper{
+
+}
+/* Основные стили */
+.container{
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 10px;
+}
+.header{
+   position: fixed;
+   width: 100%;
+   top: 0;
+   left: 0;
+   z-index: 50;
+}
+.header:before{
+  content: '';
+  position:absolute;
+  top: 0;
+  left: 0;
   width: 100%;
-  padding-right: 0px!important;
-  padding-left: 0px!important;
+  height: 100%;
+  /* background-color: #5e5373; */
+  box-shadow: 0 1px 18px rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(5, 70, 124, 0.86);
+  background-color: #ffffff;  
+  z-index: 2;
 }
 
-.container {
-  width: 100%;
-  padding-right: 0px!important;
-  padding-left: 0px!important;
-  margin-right: auto;
-  margin-left: auto;
-} */
+.header__body{
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  height: 80px;
+  align-items:center;
+} 
+.header__logo{
+  /* flex: 0 0 60px;
+  border-radius:50%;
+  overflow: hidden;
+  border: 4px double black; */
+  z-index: 3;
+
+}
+
+.header__logo img{
+  max-width:100%;
+  display: block;
+}
+.header__burger{
+  display: none;
+}
+.header__menu{}
+
+.header__list{
+  display:flex;
+  position: relative;
+  z-index: 2;
+}
+
+.header__list li{
+  list-style: none;
+  margin: 0 0 0 20px;
+}
+.header__link{
+  color: #fff;
+  text-transform:uppercase;
+  font-size: 18px;
+  text-decoration:none;
+}
+.menu__item > a {
+  font-family: Helvetica;
+  font-size: 24px;
+  color: #272727;
+  text-decoration: none; /* Отменяем подчеркивание у ссылки */
+  transition: all .25s;
+} 
+
+/* @media (max-width: 767px){ */
+@media (max-width: 835px){
+  body.lock{
+    overflow: hidden;
+  }
+  /* Высата шпаки на телефоне меньше 80px */
+  .header__body{
+    height: 50px;
+  }
+  .content{
+    padding: 50px 0px 0px 0px;
+  }
+
+  /* Логотип */
+  .header__logo{
+    flex: 0 0 80px;
+  }
+  .header__burger{
+    display: block;
+    position: relative;
+    width: 30px;
+    height: 20px;
+    position: relative;
+    z-index: 3;
+  }
+  .header__burger span{
+    position: absolute;
+    background-color:rgba(5, 70, 124, 0.86);
+    left: 0;
+    width: 100%;
+    height: 2px;
+    top: 9px;
+    /* Плавность при переключение бургера на крестик */
+    transition: all 0.4s ease 0s;
+  }
+  .header__burger:before,
+  .header__burger:after{
+    content: '';
+    background-color: rgba(5, 70, 124, 0.86);
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    left: 0;
+    /* Плавность при переключение бургера на крестик */
+    transition: all 0.3s ease 0s;
+  }
+  .header__burger:before{
+   top: 0;
+  }
+  .header__burger:after{
+   bottom:0;
+  }
+  /* При нажатии на бургер создается крестик */
+  .header__burger.active span{
+    transform: scale(0);
+  }
+
+  .header__burger.active:before{
+     transform:rotate(45deg);
+     top: 9px;
+  }
+  .header__burger.active:after{
+    transform:rotate(-45deg);
+    bottom: 9px;
+ }
+
+  .header__menu{
+    position: fixed;
+    top:-100%;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    /* Плавность появление меню при нажатиии на  бургер */
+    transition: all 0.3s ease 0s;
+    /* background-color: #18b5a4; */
+    /* #f0f0f0;  Цвет фона *//* Цвет текста активного пункта */
+    /* rgb(219, 226, 236); */
+    background-color: #f0f0f0;
+    padding: 70px 10px 20px 10px;
+  }
+  .header__menu.active{
+    top:0;
+  }
+
+  /* Обращаемся list и отключаем dysplay: flex; */
+  .header__list{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+.menu__item > a {
+  font-family: Helvetica;
+  font-size: 30px;
+  color: #272727;
+  text-decoration: none;
+  transition: all .25s;
+}
+  .header__list li{
+    margin: 0 0 20px 0;
+  }
+  .header__link{
+    font-size: 28px;
+  }
+
+  }
+
+.content{
+  padding: 80px 0px 15px 15px;
+}
+.content__text{
+  font-size: 18px;
+  line-height: 25px;
+ text-align:justify; 
+}
+.content__text p{
+  margin: 0 0 20 0;
+}
+/* @media (max-width: 767px){ */
+@media(max-width: 835px){
+  .content{
+    padding: 50px 0px 0px 0px;
+  }
+}
+/* ----------------------------------------------------------------- */
+/* ----------------------------------------------------------------- */
+
 .mr-auto li ul{
   position: absolute;
   top: 80px;
@@ -41,8 +241,8 @@
 
 @media (min-width: 1200px) {
      .container {
-        /* max-width: 1170px ; */
-        max-width: 100% ;
+        max-width: 1170px ;
+        /* max-width: 100% ; */
         margin-right: auto ;
         margin-left: auto 
       }
@@ -56,25 +256,9 @@
     }
 
   }
-  /* @media (min-width: 566px){
-.container, .container-sm {
-    max-width: 520px;
-}
-} */
-  /* .fixed-top{
-      position: ;
-    } */
 
 /* Первый экран */
-.header{
-  margin: 0 auto;
 
-  /* width: 100%;  */
-  /*2003px;*/
-  box-shadow: 0 1px 18px rgba(0, 0, 0, 0.4);
-  border: 1px solid rgba(5, 70, 124, 0.86);
-  background-color: #ffffff;  
-}
     .menu{
       display:flex;
       flex-direction:row;  
@@ -82,11 +266,11 @@
       Justify-content:space-between;
       
   }
-  @media (min-width: 991px) {
+  /* @media (min-width: 991px) {
     .header{
-      height: 81px;  /*80px/16px = 5em*/ 
+      height: 81px;  80px/16px = 5em 
     }
-  }
+  } */
 
   .row_header{
     display:flex;
@@ -105,18 +289,27 @@
   .menu__item:hover {
       background-color: #f0f0f0; /* Цвет фона *//* Цвет текста активного пункта */
       background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.12) 100%);
-      /* border-top: 1px solid rgba(5, 70, 124, 0.86); */
+      border-top: 1px solid rgba(5, 70, 124, 0.86);
+      border-bottom: 4px solid  #235b8b;/* Цвет фона активного пункта */
+      cursor: pointer
+     }
+  .menu__item.active:hover {
+      background-color: #f0f0f0; /* Цвет фона *//* Цвет текста активного пункта */
+      background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.12) 100%);
+      border-top: 1px solid rgba(5, 70, 124, 0.86);
+      border-left: 1px solid rgba(5, 70, 124, 0.86);
+      border-right: 1px solid rgba(5, 70, 124, 0.86);
       border-bottom: 4px solid  #235b8b;/* Цвет фона активного пункта */
       cursor: pointer
      }
   
-  .menu__item > a {
+     /* .menu__item > a {
       font-family: Helvetica;
       font-size: 24px;
       color: #272727;
       text-decoration: none; /* Отменяем подчеркивание у ссылки */
-      transition: all .25s;
-  } 
+      /* transition: all .25s;
+  }  */ */
 
   /* Иконка меню */
   .my-icon>div{
@@ -200,13 +393,19 @@
   text-decoration: underline;
 }
 /* Видимость номера телефона  и телефона*/
-@media (min-width: 992px) and (max-width: 1200px) {
+/* @media (min-width: 992px) and (max-width: 1200px) */
+@media  (max-width: 1200px) {
   /* .telefon2, .iphone */
   .iphone-off{
     display:none;
   } 
 }
-@media (min-width: 992px) and (min-width: 1200px) {
+/* По нажатию на бургер меню отображать телефоны */
+.iphone-off.active{
+  display:flex;
+} 
+/* @media (min-width: 992px) and (min-width: 1200px) */
+@media (min-width: 1200px) {
   .nav-tell-enable{
     width: 0;
     height: 0;
@@ -225,164 +424,6 @@
 }
 }
 
-/* @media (min-width: 1200px) {
-  .col-lg-1, .col-lg-2, .col-lg-3, .col-lg-4, .col-lg-5, .col-lg-6, .col-lg-7, .col-lg-8, .col-lg-9, .col-lg-10, .col-lg-11, .col-lg-12 {
-    float: left!important;
-  }
-  .col-lg-12 {
-    width: 100%!important;
-  }
-  .col-lg-11 {
-    width: 91.66666667%!important;
-  }
-  .col-lg-10 {
-    width: 83.33333333%!important;
-  }
-  .col-lg-9 {
-    width: 75%!important;
-  }
-  .col-lg-8 {
-    width: 66.66666667%!important;
-  }
-  .col-lg-7 {
-    width: 58.33333333%!important;
-  }
-  .col-lg-6 {
-    width: 50%!important;
-  }
-  .col-lg-5 {
-    width: 41.66666667%!important;
-  }
-  .col-lg-4 {
-    width: 33.33333333%!important;
-  }
-  .col-lg-3 {
-    width: 25%!important;
-  }
-  .col-lg-2 {
-    width: 16.66666667%!important;
-  }
-  .col-lg-1 {
-    width: 8.33333333%!important;
-  }
-  .col-lg-pull-12 {
-    right: 100%!important;
-  }
-  .col-lg-pull-11 {
-    right: 91.66666667%!important;
-  }
-  .col-lg-pull-10 {
-    right: 83.33333333%!important;
-  }
-  .col-lg-pull-9 {
-    right: 75%!important;
-  }
-  .col-lg-pull-8 {
-    right: 66.66666667%!important;
-  }
-  .col-lg-pull-7 {
-    right: 58.33333333%!important;
-  }
-  .col-lg-pull-6 {
-    right: 50%!important;
-  }
-  .col-lg-pull-5 {
-    right: 41.66666667%!important;
-  }
-  .col-lg-pull-4 {
-    right: 33.33333333%!important;
-  }
-  .col-lg-pull-3 {
-    right: 25%!important;
-  }
-  .col-lg-pull-2 {
-    right: 16.66666667%!important;
-  }
-  .col-lg-pull-1 {
-    right: 8.33333333%!important;
-  }
-  .col-lg-pull-0 {
-    right: auto!important;
-  }
-  .col-lg-push-12 {
-    left: 100%!important;
-  }
-  .col-lg-push-11 {
-    left: 91.66666667%!important;
-  }
-  .col-lg-push-10 {
-    left: 83.33333333%!important;
-  }
-  .col-lg-push-9 {
-    left: 75%;
-  }
-  .col-lg-push-8 {
-    left: 66.66666667%;
-  }
-  .col-lg-push-7 {
-    left: 58.33333333%;
-  }
-  .col-lg-push-6 {
-    left: 50%;
-  }
-  .col-lg-push-5 {
-    left: 41.66666667%;
-  }
-  .col-lg-push-4 {
-    left: 33.33333333%;
-  }
-  .col-lg-push-3 {
-    left: 25%;
-  }
-  .col-lg-push-2 {
-    left: 16.66666667%;
-  }
-  .col-lg-push-1 {
-    left: 8.33333333%;
-  }
-  .col-lg-push-0 {
-    left: auto;
-  }
-  .col-lg-offset-12 {
-    margin-left: 100%;
-  }
-  .col-lg-offset-11 {
-    margin-left: 91.66666667%;
-  }
-  .col-lg-offset-10 {
-    margin-left: 83.33333333%;
-  }
-  .col-lg-offset-9 {
-    margin-left: 75%;
-  }
-  .col-lg-offset-8 {
-    margin-left: 66.66666667%;
-  }
-  .col-lg-offset-7 {
-    margin-left: 58.33333333%;
-  }
-  .col-lg-offset-6 {
-    margin-left: 50%;
-  }
-  .col-lg-offset-5 {
-    margin-left: 41.66666667%;
-  }
-  .col-lg-offset-4 {
-    margin-left: 33.33333333%;
-  }
-  .col-lg-offset-3 {
-    margin-left: 25%;
-  }
-  .col-lg-offset-2 {
-    margin-left: 16.66666667%;
-  }
-  .col-lg-offset-1 {
-    margin-left: 8.33333333%;
-  }
-  .col-lg-offset-0 {
-    margin-left: 0%;
-  }
-} */
 .div_my_menu{
   /* -ms-flex: 0 0 25%;
   flex: 0 0 25%;
@@ -391,22 +432,14 @@
   flex-direction:row;  
   align-items: center; 
   Justify-content:space-between;
-   width:100%; /* 1170px;  */
-   
+  width:100%; /* 1170px;  */
+}
+.overflow{
+    /* Для появления скрола при развернутом на телефоне меню */
+    overflow: auto;
+
 }
 
 
 
 
- /* Для ограничения ширины логотипа  */
-/* @media (max-width: 992px) {
-  .div_my_menu{
-    display:block;
-    -ms-flex: 0 0 100%;
-    flex: 0 0 100%;
-    max-width: 100%;
-  }
-  .telefon1{
-    margin-left: 0px!important;
-  }
-  } */

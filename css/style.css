@@ -6,6 +6,10 @@ body{
   	font-style: normal;
     font-weight: normal; 
 }
+     /* Отключение прокрутки Скрола при развернктом меню */
+     body.lock{
+      overflow: hidden;
+      }
 
 ul, li {
     display: block;
@@ -25,42 +29,7 @@ h1, h2, h3, h4, h5 {
 
 
 /* Первый экран */
-.header0{
-    margin: 0 auto;
-    /* height: 80px; 80px/16px = 5em */
-    width: 100%; /*2003px;*/
-    box-shadow: 0 1px 18px rgba(0, 0, 0, 0.4);
-    border: 1px solid rgba(5, 70, 124, 0.86);
-    background-color: rgb(255, 255, 255);  
-}
-.row_header0{
-    display:flex;
-    flex-direction:row;  
-    align-items: center; 
-    Justify-content:space-between;
-}
-.menu0{
-    display:flex;
-    flex-direction:row;  
-    align-items: center; 
-    Justify-content:space-between;
-}
 
-.menu__item0{
-    margin: 0 6px;
-    display: flex;
-    align-items: center;
-    height: 80px;
-    border-bottom: 4px solid transparent; /* Цвет нижней линии подчеркивания прозрачный */
-}
-
-.menu__item0:hover {
-    background-color: #f0f0f0; /* Цвет фона *//* Цвет текста активного пункта */
-    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.12) 100%);
-    /* border-top: 1px solid rgba(5, 70, 124, 0.86); */
-    border-bottom: 4px solid  #235b8b;/* Цвет фона активного пункта */
-    cursor: pointer
-   }
 
 .menu__item0 > a {
     font-family: Helvetica;
@@ -82,6 +51,7 @@ h1, h2, h3, h4, h5 {
 
   Justify-content:flex-start;
 }
+
 
 .telefon20{
 
@@ -259,6 +229,13 @@ h1, h2, h3, h4, h5 {
     text-align: center;
     margin-bottom: 0px;
 }
+
+/* input:-webkit-autofill,
+select:-webkit-autofill{
+  color: -internal-light-dark(black, white);
+} ; */
+
+
 .input1{
   /* Style for "edit box" */
     /* margin-top: 9px ; */
@@ -267,6 +244,8 @@ h1, h2, h3, h4, h5 {
     box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.19);
     border-radius: 3px;
     background-color: #ffffff;
+    padding-left: 10px;
+
 }
 .input2{
     /* Style for "edit box" */
@@ -276,6 +255,7 @@ h1, h2, h3, h4, h5 {
       box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.19);
       border-radius: 3px;
       background-color: #ffffff;
+      padding-left: 10px;
   }
   .input3{
       /* Style for "edit box к" */
@@ -285,6 +265,8 @@ h1, h2, h3, h4, h5 {
       box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.19);
       border-radius: 3px;
       background-color: #ffffff;
+      padding-left: 10px;
+
   }
   .button{
     display:flex;
@@ -742,6 +724,7 @@ h1, h2, h3, h4, h5 {
   content: "";
   background: no-repeat center center;
   background-size: 100% 100%;
+
 }
 /* .my-icon{
   width: 44px;
@@ -876,6 +859,7 @@ h1, h2, h3, h4, h5 {
       letter-spacing:0px;
     }
 
+}
     @media (max-width: 992px) {
   
       .img_disable{
@@ -892,20 +876,21 @@ h1, h2, h3, h4, h5 {
       .about{
         justify-content: center; /* space-around; space-between; center*/  
       }
-    }
+
+    
+
+  }
+
     .about-p-top{
         margin-top: 15px;
       }
 
-      /* .figure_3, .salon_sindika{
-        display: flex;
-        justify-content: center;
-      } */
-      
       .fflex {
         justify-content: center;
     }
-    }
+
+  
+
     @media (min-width: 992px) {
       .about-p-top{
         margin-top: 0;
