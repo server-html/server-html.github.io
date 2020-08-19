@@ -89,7 +89,8 @@ html,body{
 } 
 
 /* @media (max-width: 767px){ */
-@media (max-width: 835px){
+  /* @media (max-width: 835px){ */
+@media (max-width: 840px){
   body.lock{
     overflow: hidden;
   }
